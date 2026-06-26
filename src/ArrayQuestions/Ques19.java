@@ -20,6 +20,8 @@ package ArrayQuestions;
 
 class Solution19{
     public int maximumPopulation(int[][] logs){
+
+        /*
         int maxPopulation = 0;
         int ansYear = 1950;
         for(int year= 1950 ; year <= 2050 ; year++){
@@ -34,6 +36,28 @@ class Solution19{
                     maxPopulation = population;
                     ansYear = year;
                 }
+            }
+        }
+
+        */
+
+        // optimal solution
+        int[] diff = new int[101];
+        for(int[] person : logs){
+            diff[person[0] - 1950] ++;
+            diff[person[1] - 1950] --;
+        }
+
+        int population = 0;
+        int maxPopulation = 0;
+        int ansYear = 1950;
+
+        for(int i = 0 ; i < 101 ; i++){
+            population += diff[i];
+
+            if(population > maxPopulation){
+                maxPopulation = population;
+                ansYear = i + 1950;
             }
         }
         return ansYear;
