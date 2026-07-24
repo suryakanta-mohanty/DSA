@@ -16,6 +16,8 @@ class Solution22{
     public int[] sumZero(int n){
         int[] arr = new int[n];
 
+        /*
+
         // Optimal way of my first method.
         int index = 0;
 
@@ -25,6 +27,13 @@ class Solution22{
             arr[index++] = -i;
         }
 
+        */
+
+        // Even more solution
+        for (int i = 0 ; i < n/2 ; i++){
+            arr[i] = i + 1;
+            arr[n - 1 - i] = -(i + 1);  // it will add -ve value from last or right side.
+        }
         return arr;
     }
 }
