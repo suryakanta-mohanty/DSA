@@ -15,30 +15,14 @@ import java.util.Arrays;
 class Solution22{
     public int[] sumZero(int n){
         int[] arr = new int[n];
-        boolean nOdd = false;
 
-        // My first method.
-        if(n%2 != 0){
-            n--;
-            nOdd = true;
-        }
+        // Optimal way of my first method.
+        int index = 0;
 
-        int nNeed = n/2;
-
-        for (int i = 0 ; i < n ; i++){
-            arr[i] = nNeed;
-
-            if(i % 2 == 0){
-                nNeed = -nNeed;
-
-            } else{
-                nNeed = -nNeed;
-                nNeed++;
-            }
-        }
-
-        if(nOdd){
-            arr[n] = 0;
+        // Insert in pair like (1, -1), (2, -2), etc.
+        for (int i = 1 ; i <= n/2 ; i++){
+            arr[index++] = i;
+            arr[index++] = -i;
         }
 
         return arr;
@@ -48,7 +32,7 @@ class Solution22{
 public class Ques22 {
     public static void main(String[] a){
         Solution22 obj = new Solution22();
-        int n = 3;
+        int n = 5;
         System.out.println(Arrays.toString(obj.sumZero(n)));
     }
 }
